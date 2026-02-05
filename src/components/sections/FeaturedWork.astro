@@ -1,0 +1,76 @@
+---
+interface Project {
+  title: string;
+  description: string;
+  result: string;
+  tags: string[];
+  href: string;
+}
+
+interface Props {
+  projects?: Project[];
+}
+
+const { projects = [
+  {
+    title: 'GitOps Pipeline Overhaul',
+    description: 'Migrated legacy CI/CD to ArgoCD-driven GitOps, eliminating manual deployments and reducing release friction.',
+    result: '93% faster deploys',
+    tags: ['Kubernetes', 'ArgoCD', 'Terraform'],
+    href: '/portfolio/gitops-overhaul',
+  },
+  {
+    title: 'Platform Team Foundation',
+    description: 'Built platform engineering function from scratch, establishing golden paths and self-service infrastructure.',
+    result: '4x developer velocity',
+    tags: ['EKS', 'Platform Engineering', 'IaC'],
+    href: '/portfolio/platform-team',
+  },
+]} = Astro.props;
+---
+
+<section class="container py-16 md:py-20">
+  <div class="flex items-end justify-between">
+    <div>
+      <h2 class="text-2xl font-heading font-semibold md:text-3xl">
+        Featured Work
+      </h2>
+      <p class="mt-2 text-text-secondary">
+        Recent projects with measurable impact.
+      </p>
+    </div>
+    <a href="/portfolio" class="hidden text-sm text-accent-primary hover:text-accent-hover md:block">
+      View all &rarr;
+    </a>
+  </div>
+
+  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    {projects.map((project, index) => (
+      <a href={project.href} class="card group">
+        <div class="flex items-start justify-between">
+          <span class="font-mono text-sm text-text-muted">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <span class="rounded-full bg-accent-subtle px-3 py-1 font-mono text-xs text-accent-primary">
+            {project.result}
+          </span>
+        </div>
+        <h3 class="mt-4 text-lg font-heading font-semibold group-hover:text-accent-primary transition-colors">
+          {project.title}
+        </h3>
+        <p class="mt-2 text-sm text-text-secondary">
+          {project.description}
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <a href="/portfolio" class="mt-6 block text-sm text-accent-primary hover:text-accent-hover md:hidden">
+    View all projects &rarr;
+  </a>
+</section>

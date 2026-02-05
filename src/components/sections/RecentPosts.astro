@@ -1,0 +1,74 @@
+---
+interface Post {
+  title: string;
+  date: string;
+  tag: string;
+  href: string;
+}
+
+interface Props {
+  posts?: Post[];
+}
+
+const { posts = [
+  {
+    title: 'Why I Still Write Code as an Engineering Leader',
+    date: '2026-01-15',
+    tag: 'Leadership',
+    href: '/blog/why-i-still-write-code',
+  },
+  {
+    title: 'The Hidden Cost of Skipping Platform Investment',
+    date: '2026-01-02',
+    tag: 'Platform',
+    href: '/blog/platform-investment',
+  },
+  {
+    title: 'GitOps Is Not Just for Kubernetes',
+    date: '2025-12-18',
+    tag: 'GitOps',
+    href: '/blog/gitops-beyond-k8s',
+  },
+]} = Astro.props;
+---
+
+<section class="container py-16 md:py-20">
+  <div class="flex items-end justify-between">
+    <div>
+      <h2 class="text-2xl font-heading font-semibold md:text-3xl">
+        Recent Writing
+      </h2>
+      <p class="mt-2 text-text-secondary">
+        Thoughts on engineering and leadership.
+      </p>
+    </div>
+    <a href="/blog" class="hidden text-sm text-accent-primary hover:text-accent-hover md:block">
+      View all &rarr;
+    </a>
+  </div>
+
+  <div class="mt-8 divide-y divide-border-subtle">
+    {posts.map((post) => (
+      <a href={post.href} class="group flex items-center justify-between py-4 first:pt-0 last:pb-0">
+        <div class="flex items-center gap-4">
+          <span class="hidden font-mono text-sm text-text-muted md:block">
+            {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+          </span>
+          <span class="rounded-full bg-bg-tertiary px-2.5 py-0.5 font-mono text-xs text-text-secondary">
+            {post.tag}
+          </span>
+          <span class="font-medium group-hover:text-accent-primary transition-colors">
+            {post.title}
+          </span>
+        </div>
+        <span class="text-text-muted group-hover:text-accent-primary transition-colors">
+          &rarr;
+        </span>
+      </a>
+    ))}
+  </div>
+
+  <a href="/blog" class="mt-6 block text-sm text-accent-primary hover:text-accent-hover md:hidden">
+    View all posts &rarr;
+  </a>
+</section>

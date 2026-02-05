@@ -2,19 +2,20 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import Stats from '../components/sections/Stats.astro';
+import FeaturedWork from '../components/sections/FeaturedWork.astro';
+import RecentPosts from '../components/sections/RecentPosts.astro';
 ---
 
 <Base title="Todd | Platform Engineering Leader">
   <Header />
   <main class="flex-1">
-    <section class="container py-20">
-      <h1 class="text-4xl font-heading font-semibold md:text-5xl">
-        Hello, World.
-      </h1>
-      <p class="mt-4 max-w-2xl text-lg text-text-secondary">
-        Site scaffold complete. Phase 1 checkpoint reached.
-      </p>
-    </section>
+    <Hero>
+      <Stats />
+    </Hero>
+    <FeaturedWork />
+    <RecentPosts />
   </main>
   <Footer />
 </Base>
