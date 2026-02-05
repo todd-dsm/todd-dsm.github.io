@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://todd-dsm.github.io/sitemap-index.xml
