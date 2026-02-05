@@ -1,0 +1,57 @@
+---
+interface TimelineItem {
+  dateRange: string;
+  title: string;
+  company: string;
+  description: string;
+  highlights?: string[];
+}
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="relative">
+  <!-- Vertical line -->
+  <div class="absolute left-0 top-0 bottom-0 w-px bg-border-default md:left-32"></div>
+
+  <div class="space-y-8">
+    {items.map((item, index) => (
+      <div class="relative pl-6 md:pl-40">
+        <!-- Dot -->
+        <div class="absolute left-0 top-2 h-2 w-2 -translate-x-[3px] rounded-full bg-accent-primary md:left-32"></div>
+
+        <!-- Date (positioned left on desktop) -->
+        <span class="mb-2 block font-mono text-sm text-text-muted md:absolute md:left-0 md:top-1 md:mb-0 md:w-28 md:text-right">
+          {item.dateRange}
+        </span>
+
+        <!-- Content -->
+        <div>
+          <h3 class="font-heading text-lg font-semibold">
+            {item.title}
+          </h3>
+          <p class="mt-0.5 text-text-secondary">
+            {item.company}
+          </p>
+          <p class="mt-2 text-sm text-text-secondary">
+            {item.description}
+          </p>
+          {item.highlights && item.highlights.length > 0 && (
+            <ul class="mt-2 space-y-1">
+              {item.highlights.map((highlight) => (
+                <li class="text-sm text-text-muted flex items-start gap-2">
+                  <span class="text-accent-primary mt-1.5">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
