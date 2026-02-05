@@ -13,18 +13,25 @@ interface Props {
 
 const { projects = [
   {
-    title: 'GitOps Pipeline Overhaul',
-    description: 'Migrated legacy CI/CD to ArgoCD-driven GitOps, eliminating manual deployments and reducing release friction.',
-    result: '93% faster deploys',
-    tags: ['Kubernetes', 'ArgoCD', 'Terraform'],
-    href: '/portfolio/gitops-overhaul',
+    title: 'PIMCO: GitOps for High-Performance Computing',
+    description: 'Architected Kubernetes-based HPC platform with GitOps and Kafka for a global investment management firm. Solution continues to support $1.4T in managed assets.',
+    result: '6,000% efficiency gain',
+    tags: ['Kubernetes', 'GitOps', 'Kafka', 'Okta'],
+    href: '/portfolio/pimco-gitops',
   },
   {
-    title: 'Platform Team Foundation',
-    description: 'Built platform engineering function from scratch, establishing golden paths and self-service infrastructure.',
-    result: '4x developer velocity',
-    tags: ['EKS', 'Platform Engineering', 'IaC'],
-    href: '/portfolio/platform-team',
+    title: 'USAF: Karpenter on GovCloud',
+    description: 'Filed issues and implemented fixes enabling Karpenter on AWS GovCloud — a cost optimization now available to all US Government agencies.',
+    result: '82% EC2 cost reduction',
+    tags: ['EKS', 'Karpenter', 'GovCloud', 'Vault'],
+    href: '/portfolio/usaf-karpenter',
+  },
+  {
+    title: 'Panasonic Avionics: Global Satellite Platform',
+    description: 'Led team through VMware-to-GCP migration for global ground network supporting satellite comms, inflight WiFi, entertainment, and transaction processing.',
+    result: '4,800% efficiency gain',
+    tags: ['GKE', 'Istio', 'Vault', 'GitOps'],
+    href: '/portfolio/panasonic-satellite',
   },
 ]} = Astro.props;
 ---
