@@ -3,6 +3,7 @@ interface TimelineItem {
   dateRange: string;
   title: string;
   company: string;
+  type?: string;
   description: string;
   highlights?: string[];
 }
@@ -36,6 +37,9 @@ const { items } = Astro.props;
           </h3>
           <p class="mt-0.5 text-text-secondary">
             {item.company}
+            {item.type && (
+              <span class="ml-2 font-mono text-xs text-text-muted">({item.type})</span>
+            )}
           </p>
           <p class="mt-2 text-sm text-text-secondary">
             {item.description}
