@@ -1,0 +1,64 @@
+---
+import Base from './Base.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { formatDate, getReadingTime } from '../lib/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  updated?: Date;
+  tags: string[];
+  content: string;
+}
+
+const { title, description, date, updated, tags, content } = Astro.props;
+const readingTime = getReadingTime(content);
+---
+
+<Base title={`${title} | Todd Thomas`} description={description}>
+  <Header />
+  <main class="flex-1">
+    <article class="container py-16 md:py-20">
+      <!-- Back link -->
+      <a href="/blog" class="inline-flex items-center gap-2 font-mono text-sm text-text-muted hover:text-accent-primary transition-colors">
+        <span>&larr;</span>
+        <span>Back to Blog</span>
+      </a>
+
+      <!-- Header -->
+      <header class="mt-8">
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+          <span class="font-mono text-text-muted">{formatDate(date)}</span>
+          {updated && (
+            <>
+              <span class="text-border-default">•</span>
+              <span class="text-text-muted">Updated {formatDate(updated)}</span>
+            </>
+          )}
+          <span class="text-border-default">•</span>
+          <span class="text-text-muted">{readingTime} min read</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-heading font-semibold md:text-4xl">
+          {title}
+        </h1>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <a href={`/blog?tag=${tag.toLowerCase()}`} class="tag hover:bg-accent-subtle hover:text-accent-primary transition-colors">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg mx-auto mt-10 max-w-prose dark:prose-invert prose-headings:font-heading prose-headings:font-semibold prose-a:text-accent-primary prose-a:no-underline hover:prose-a:text-accent-hover prose-code:before:content-none prose-code:after:content-none prose-pre:bg-surface-code prose-pre:border prose-pre:border-border-subtle">
+        <slot />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Base>
