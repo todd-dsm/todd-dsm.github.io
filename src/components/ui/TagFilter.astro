@@ -1,0 +1,94 @@
+---
+interface Props {
+  tags: string[];
+  basePath: string;
+}
+
+const { tags, basePath } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-2" id="tag-filter">
+  <button
+    type="button"
+    data-tag="all"
+    class="filter-tag active rounded-full border border-border-default px-4 py-1.5 font-mono text-sm transition-colors"
+  >
+    All
+  </button>
+  {tags.map((tag) => (
+    <button
+      type="button"
+      data-tag={tag.toLowerCase()}
+      class="filter-tag rounded-full border border-border-default px-4 py-1.5 font-mono text-sm transition-colors"
+    >
+      {tag}
+    </button>
+  ))}
+</div>
+
+<style>
+  .filter-tag {
+    color: var(--text-secondary);
+    background: transparent;
+  }
+
+  .filter-tag:hover {
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+  }
+
+  .filter-tag.active {
+    color: var(--accent-primary);
+    background: var(--accent-subtle);
+    border-color: var(--accent-border);
+  }
+</style>
+
+<script>
+  function initTagFilter() {
+    const filterButtons = document.querySelectorAll('.filter-tag');
+    const items = document.querySelectorAll('[data-tags]');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const tag = button.getAttribute('data-tag');
+
+        // Update active state
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Filter items
+        items.forEach((item) => {
+          const itemTags = item.getAttribute('data-tags')?.toLowerCase() || '';
+          if (tag === 'all' || itemTags.includes(tag!)) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        // Update URL hash without scrolling
+        if (tag === 'all') {
+          history.replaceState(null, '', window.location.pathname);
+        } else {
+          history.replaceState(null, '', `#${tag}`);
+        }
+      });
+    });
+
+    // Check for hash on load
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const matchingButton = document.querySelector(`[data-tag="${hash}"]`);
+      if (matchingButton) {
+        (matchingButton as HTMLButtonElement).click();
+      }
+    }
+  }
+
+  // Run on initial load
+  initTagFilter();
+
+  // Re-run on view transitions
+  document.addEventListener('astro:page-load', initTagFilter);
+</script>

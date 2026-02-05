@@ -1,19 +1,64 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import TagFilter from '../components/ui/TagFilter.astro';
+import { getUniqueTags } from '../lib/utils';
+
+const portfolio = await getCollection('portfolio');
+const sortedPortfolio = portfolio.sort((a, b) => a.data.order - b.data.order);
+const tags = getUniqueTags(portfolio);
 ---
 
-<Base title="Portfolio | Todd">
+<Base title="Portfolio | Todd Thomas" description="Platform engineering projects with measurable impact.">
   <Header />
   <main class="flex-1">
-    <section class="container py-20">
-      <h1 class="text-3xl font-heading font-semibold md:text-4xl">
-        Portfolio
-      </h1>
-      <p class="mt-4 text-text-secondary">
-        Coming in Phase 4.
-      </p>
+    <section class="container py-16 md:py-20">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h1 class="text-3xl font-heading font-semibold md:text-4xl">
+            Portfolio
+          </h1>
+          <p class="mt-2 text-text-secondary">
+            Projects with measurable impact. Before and after.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <TagFilter tags={tags} basePath="/portfolio" />
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {sortedPortfolio.map((project, index) => (
+          <a
+            href={`/portfolio/${project.id}`}
+            class="card group"
+            data-tags={project.data.tags.join(' ').toLowerCase()}
+          >
+            <div class="flex items-start justify-between">
+              <span class="font-mono text-sm text-text-muted">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="rounded-full bg-accent-subtle px-3 py-1 font-mono text-xs text-accent-primary">
+                {project.data.result}
+              </span>
+            </div>
+            <h2 class="mt-4 text-lg font-heading font-semibold group-hover:text-accent-primary transition-colors">
+              {project.data.title}
+            </h2>
+            <p class="mt-2 text-sm text-text-secondary">
+              {project.data.description}
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.data.tech.slice(0, 4).map((t) => (
+                <span class="tag">{t}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
     </section>
   </main>
   <Footer />

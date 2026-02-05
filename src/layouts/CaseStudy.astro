@@ -1,0 +1,76 @@
+---
+import Base from './Base.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { formatDate } from '../lib/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  role: string;
+  result: string;
+  tech: string[];
+  tags: string[];
+}
+
+const { title, description, date, role, result, tech, tags } = Astro.props;
+---
+
+<Base title={`${title} | Todd Thomas`} description={description}>
+  <Header />
+  <main class="flex-1">
+    <article class="container py-16 md:py-20">
+      <!-- Back link -->
+      <a href="/portfolio" class="inline-flex items-center gap-2 font-mono text-sm text-text-muted hover:text-accent-primary transition-colors">
+        <span>&larr;</span>
+        <span>Back to Portfolio</span>
+      </a>
+
+      <!-- Header -->
+      <header class="mt-8 border-b border-border-subtle pb-8">
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+          <span class="font-mono text-text-muted">{formatDate(date)}</span>
+          <span class="text-border-default">•</span>
+          <span class="text-text-secondary">{role}</span>
+        </div>
+
+        <h1 class="mt-4 text-3xl font-heading font-semibold md:text-4xl">
+          {title}
+        </h1>
+
+        <p class="mt-4 text-lg text-text-secondary">
+          {description}
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <span class="rounded-full bg-accent-subtle px-4 py-1.5 font-mono text-sm font-medium text-accent-primary">
+            {result}
+          </span>
+          <div class="flex flex-wrap gap-2">
+            {tech.map((t) => (
+              <span class="tag">{t}</span>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg mx-auto mt-10 max-w-prose dark:prose-invert prose-headings:font-heading prose-headings:font-semibold prose-a:text-accent-primary prose-a:no-underline hover:prose-a:text-accent-hover prose-code:before:content-none prose-code:after:content-none">
+        <slot />
+      </div>
+
+      <!-- Footer tags -->
+      <footer class="mt-12 border-t border-border-subtle pt-8">
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <a href={`/portfolio?tag=${tag.toLowerCase()}`} class="tag hover:bg-accent-subtle hover:text-accent-primary transition-colors">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </footer>
+    </article>
+  </main>
+  <Footer />
+</Base>
