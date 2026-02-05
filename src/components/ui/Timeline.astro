@@ -43,9 +43,9 @@ const { items } = Astro.props;
           {item.highlights && item.highlights.length > 0 && (
             <ul class="mt-2 space-y-1">
               {item.highlights.map((highlight) => (
-                <li class="text-sm text-text-muted flex items-start gap-2">
-                  <span class="text-accent-primary mt-1.5">•</span>
-                  <span>{highlight}</span>
+                <li class="text-sm text-text-muted flex gap-2">
+                  <span class="text-accent-primary leading-relaxed">•</span>
+                  <span class="leading-relaxed">{highlight}</span>
                 </li>
               ))}
             </ul>
