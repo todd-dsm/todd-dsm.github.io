@@ -1,11 +1,11 @@
 ---
 title: "Panasonic Avionics: Global Satellite Platform"
-description: "Led VMware-to-GCP migration for global ground network supporting satellite comms, inflight WiFi, entertainment, and transaction processing."
+description: "Led multi-cloud migration (VMware to GCP/AWS) for global ground network supporting satellite comms and in-flight purchases."
 date: 2018-08-01
 tags: ["Cloud Migration", "Kubernetes", "Security"]
 result: "4,800% efficiency gain"
 role: "Cloud Infrastructure Architect"
-tech: ["GKE", "Istio", "HashiCorp Vault", "GitOps", "GCP"]
+tech: ["GKE", "EKS", "Istio", "HashiCorp Vault", "GitOps", "GCP", "AWS"]
 featured: true
 order: 3
 ---
@@ -14,20 +14,30 @@ order: 3
 
 Panasonic Avionics operates the global ground network that powers inflight WiFi, entertainment systems, and transaction processing for airlines worldwide. The existing VMware-based infrastructure was limiting their ability to scale and iterate on their satellite communications platform.
 
+Shipping a feature meant circular handoffs — dev → ops → QA → defects → repeat. Two weeks was optimistic.
+
 ## The Approach
 
-Led a 3-person team through architecture and execution of a complete platform migration from on-premises VMware to Google Cloud Platform. The scope included satellite communications infrastructure, inflight WiFi systems, entertainment delivery, and payment transaction processing.
+Led a 3-person team through architecture and execution of a multi-cloud platform migration from on-premises VMware to GCP and AWS. The scope included satellite communications infrastructure, inflight WiFi systems, entertainment delivery, and payment transaction processing.
 
 ### Architecture Decisions
 
+**Platform**
 - **Kubernetes-centric design** — GKE provided the orchestration layer for containerized workloads across a globally distributed network
 - **Istio service mesh** — Critical for securing service-to-service communication in a platform handling financial transactions and passenger data
 - **HashiCorp Vault** — Centralized secrets management across a complex, distributed infrastructure
+- **Solve once, replicate everywhere** — Once the cluster architecture was validated, every additional region became a multiplication problem, not an engineering problem
+
+**Software Delivery**
 - **GitOps practices** — All changes tracked in Git, enabling rapid iteration with full auditability
+- **Automated Testing** — Validation gates ensured quality before deployment to production
+- **Release Management** — Controlled rollouts across global regions with rollback capabilities
 
 ## The Result
 
-The migration achieved a **4,800% efficiency gain** in software delivery. The team could ship changes in hours instead of weeks, while maintaining the security posture required for handling payment card data and operating global telecommunications infrastructure.
+The migration achieved a **4,800% efficiency gain** in software delivery — from two weeks to under 15 minutes.
+
+With infrastructure distributed globally and automated tests on every push, teams became loosely coupled. Iterate locally, release globally — one operation.
 
 ## Lessons Learned
 
