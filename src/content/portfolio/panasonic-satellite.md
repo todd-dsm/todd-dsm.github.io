@@ -41,4 +41,8 @@ With infrastructure distributed globally and automated tests on every push, team
 
 ## Lessons Learned
 
-Migrating critical infrastructure isn't just a technical challenge — it's a trust exercise. The GitOps approach gave stakeholders visibility into every change, which built confidence to move faster. Istio's service mesh added security without requiring application rewrites, which was essential for migrating legacy services safely.
+Migrating critical infrastructure isn't just a technical challenge — it's a trust exercise. The GitOps approach gave stakeholders visibility into every change, which built confidence to move faster. Security could be greatly improved without additional cost.
+
+**Business Impact:** Gaining the capacity to deliver software globally within 15 minutes is how small advantages compound. Every iteration is a chance to learn, adjust, and pull further ahead.
+
+**Social Impact:** Smooth delivery has a hidden benefit: less firefighting, less friction, less stress, more success and stronger teams. Success becomes repeatable — but only when teams stay together long enough to learn how.
