@@ -18,6 +18,20 @@ const { title, description, date, role, result, tech, tags } = Astro.props;
 ---
 
 <Base title={`${title} | Todd Thomas`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": date.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": "Todd Thomas",
+      "url": "https://todd-dsm.github.io"
+    },
+    "image": "https://todd-dsm.github.io/og-image.png",
+    "keywords": [...tags, ...tech]
+  })} />
   <Header />
   <main class="flex-1">
     <article class="container py-16 md:py-20">

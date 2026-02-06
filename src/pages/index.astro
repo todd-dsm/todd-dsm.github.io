@@ -9,6 +9,20 @@ import RecentPosts from '../components/sections/RecentPosts.astro';
 ---
 
 <Base title="Todd | Platform Engineering Leader">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Todd Thomas",
+    "url": "https://todd-dsm.github.io",
+    "jobTitle": "Platform Engineering Leader",
+    "description": "Over 20 years building platforms that enable frictionless paths to prod by refactoring complexity into simplicity.",
+    "sameAs": [
+      "https://github.com/todd-dsm",
+      "https://linkedin.com/in/todd-e-thomas"
+    ],
+    "knowsAbout": ["Platform Engineering", "Kubernetes", "GitOps", "Infrastructure as Code", "Engineering Leadership"],
+    "image": "https://todd-dsm.github.io/og-image.png"
+  })} />
   <Header />
   <main class="flex-1">
     <Hero>
