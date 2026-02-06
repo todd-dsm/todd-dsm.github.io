@@ -34,7 +34,7 @@ const tags = getUniqueTags(portfolio);
         {sortedPortfolio.map((project, index) => (
           <a
             href={`/portfolio/${project.id}`}
-            class="card group"
+            class:list={["card group", project.data.featured && "md:col-span-2"]}
             data-tags={project.data.tags.join(' ').toLowerCase()}
           >
             <div class="flex items-start justify-between">
