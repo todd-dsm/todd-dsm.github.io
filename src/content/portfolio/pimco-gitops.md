@@ -2,10 +2,10 @@
 title: "PIMCO: GitOps for High-Performance Computing"
 description: "Replaced NFS bottleneck with Kafka streaming for HPC platform. Binaries that ran all night now crush datasets in minutes. Still supports $1.4T in managed assets."
 date: 2018-08-01
-tags: ["GitOps", "Kubernetes", "Financial Services"]
+tags: ["GitOps", "Kubernetes", "Financial Services", "AWS", "Cloud Migration", "Security"]
 result: "6,000% efficiency gain"
 role: "Sr. DevOps Engineer"
-tech: ["Kubernetes", "GitOps", "Kafka", "Okta", "Auth0"]
+tech: ["Kubernetes", "GitOps", "Kafka", "AWS", "Typhoon"]
 featured: false
 order: 2
 ---

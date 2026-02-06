@@ -2,7 +2,7 @@
 title: "USAF: Karpenter on GovCloud"
 description: "Modernized app delivery for military tech refresh, detaching apps from a monolith for ArgoCD deployment. Filed upstream issues to enable Karpenter on GovCloud."
 date: 2023-09-01
-tags: ["AWS", "Kubernetes", "Government"]
+tags: ["AWS", "Kubernetes", "Government", "Security"]
 result: "82% EC2 cost reduction"
 role: "Senior Engineer"
 tech: ["EKS", "Karpenter", "GovCloud", "ArgoCD", "Kustomize", "Vault", "Boundary"]

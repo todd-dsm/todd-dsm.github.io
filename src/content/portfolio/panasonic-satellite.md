@@ -2,7 +2,7 @@
 title: "Panasonic Avionics: Global Satellite Platform"
 description: "Led multi-cloud migration (VMware to GCP/AWS) for global ground network supporting satellite comms and in-flight purchases. Reduced software delivery from two weeks to under 15 minutes."
 date: 2018-08-01
-tags: ["Cloud Migration", "Kubernetes", "Security"]
+tags: ["Cloud Migration", "Kubernetes", "Security", "GitOps", "AWS", "GCP"]
 result: "4,800% efficiency gain"
 role: "Cloud Infrastructure Architect"
 tech: ["GKE", "EKS", "Istio", "HashiCorp Vault", "GitOps", "GCP", "AWS"]
