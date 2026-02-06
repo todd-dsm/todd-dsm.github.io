@@ -29,7 +29,6 @@ Demoed [Typhoon](https://github.com/poseidon/typhoon) on AWS — Kubernetes that
 
 **Data Architecture**
 - **Kafka for inbound data** — Market feeds (S&P 500, NYSE) moved from NFS files to streaming
-- **Memory over disk** — Binaries now consume from a stream instead of waiting on storage. I/O bottleneck gone.
 
 ## The Result
 
