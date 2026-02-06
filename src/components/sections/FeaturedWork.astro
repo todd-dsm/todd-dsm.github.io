@@ -5,6 +5,7 @@ interface Project {
   result: string;
   tags: string[];
   href: string;
+  featured?: boolean;
 }
 
 interface Props {
@@ -12,6 +13,14 @@ interface Props {
 }
 
 const { projects = [
+  {
+    title: 'Panasonic Avionics: Global Satellite Platform',
+    description: 'Led team through VMware to Cloud migration (80% GCP, 20% AWS). Rolled out global network to support satellite comms which facilitated transactions for in-flight purchases (WiFi, Food & Beverage and Entertainment). Reduced global software delivery time from 2 weeks to ~15 minutes.',
+    result: '4,800% efficiency gain',
+    tags: ['GKE', 'EKS', 'Istio', 'Vault', 'GitOps'],
+    href: '/portfolio/panasonic-satellite',
+    featured: true,
+  },
   {
     title: 'PIMCO: GitOps for High-Performance Computing',
     description: 'Architected Kubernetes-based HPC platform with GitOps and Kafka for a global investment management firm. Solution continues to support $1.4T in managed assets.',
@@ -25,13 +34,6 @@ const { projects = [
     result: '82% EC2 cost reduction',
     tags: ['EKS', 'Karpenter', 'GovCloud', 'Vault'],
     href: '/portfolio/usaf-karpenter',
-  },
-  {
-    title: 'Panasonic Avionics: Global Satellite Platform',
-    description: 'Led team through VMware-to-GCP migration for global ground network supporting satellite comms, inflight WiFi, entertainment, and transaction processing.',
-    result: '4,800% efficiency gain',
-    tags: ['GKE', 'Istio', 'Vault', 'GitOps'],
-    href: '/portfolio/panasonic-satellite',
   },
 ]} = Astro.props;
 ---
@@ -53,7 +55,7 @@ const { projects = [
 
   <div class="mt-8 grid gap-6 md:grid-cols-2">
     {projects.map((project, index) => (
-      <a href={project.href} class="card group">
+      <a href={project.href} class:list={["card group", project.featured && "md:col-span-2"]}>
         <div class="flex items-start justify-between">
           <span class="font-mono text-sm text-text-muted">
             {String(index + 1).padStart(2, '0')}
