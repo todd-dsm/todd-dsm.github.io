@@ -15,7 +15,7 @@ interface Props {
 const { projects = [
   {
     title: 'Panasonic Avionics: Global Satellite Platform',
-    description: 'Led team through VMware to Cloud migration (80% GCP, 20% AWS). Rolled out global network to support satellite comms which facilitated transactions for in-flight purchases (WiFi, Food & Beverage and Entertainment). Reduced global software delivery time from 2 weeks to ~15 minutes.',
+    description: 'Led multi-cloud migration (VMware to GCP/AWS) for global ground network supporting satellite comms and in-flight purchases. Reduced software delivery from two weeks to under 15 minutes.',
     result: '4,800% efficiency gain',
     tags: ['GKE', 'EKS', 'Istio', 'Vault', 'GitOps'],
     href: '/portfolio/panasonic-satellite',
@@ -23,16 +23,16 @@ const { projects = [
   },
   {
     title: 'PIMCO: GitOps for High-Performance Computing',
-    description: 'Architected Kubernetes-based HPC platform with GitOps and Kafka for a global investment management firm. Solution continues to support $1.4T in managed assets.',
+    description: 'Replaced NFS bottleneck with Kafka streaming for HPC platform. Binaries that ran all night now crush datasets in minutes. Still supports $1.4T in managed assets.',
     result: '6,000% efficiency gain',
-    tags: ['Kubernetes', 'GitOps', 'Kafka', 'Okta'],
+    tags: ['Kubernetes', 'GitOps', 'Kafka', 'Typhoon'],
     href: '/portfolio/pimco-gitops',
   },
   {
     title: 'USAF: Karpenter on GovCloud',
-    description: 'Filed issues and implemented fixes enabling Karpenter on AWS GovCloud — a cost optimization now available to all US Government agencies.',
+    description: 'Modernized app delivery for military tech refresh, detaching apps from a monolith for ArgoCD deployment. Filed upstream issues to enable Karpenter on GovCloud.',
     result: '82% EC2 cost reduction',
-    tags: ['EKS', 'Karpenter', 'GovCloud', 'Vault'],
+    tags: ['EKS', 'Karpenter', 'GovCloud', 'ArgoCD'],
     href: '/portfolio/usaf-karpenter',
   },
 ]} = Astro.props;
