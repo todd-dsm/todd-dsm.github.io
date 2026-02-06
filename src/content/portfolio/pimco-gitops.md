@@ -12,22 +12,29 @@ order: 1
 
 ## The Challenge
 
-PIMCO, one of the world's largest investment management firms, needed a high-performance computing platform capable of supporting complex financial calculations at scale. The existing infrastructure couldn't keep pace with the demands of managing over a trillion dollars in assets.
+PIMCO was planning another upgrade to their internal compute grid — a high-performance computing platform running complex financial calculations at scale. The architecture was straightforward: a binary distributed across N cores, consuming data files from an NFS volume. Data arrived nightly from market feeds — S&P 500, NYSE, and others. The bottleneck was I/O. Cores waited on storage. Scaling meant buying more hardware.
+
+The process ran overnight. If there was one bad data needle in the haystack, there was no path to recovery — the process was just started over.
 
 ## The Approach
 
-Architected a Kubernetes-based HPC solution with a dual authentication strategy: Okta for infrastructure access and Auth0 for service-level authentication. Implemented GitOps practices alongside Kafka for event-driven processing.
+Demoed [Typhoon](https://github.com/poseidon/typhoon) on AWS — Kubernetes that could scale up and down on demand. The pitch: rent compute (OpEx) instead of buying it (CapEx). They saw the grid expand for a calculation run, then shrink when idle.
 
-### Key Decisions
+### Architecture Decisions
 
-- **Kubernetes-centric architecture** — Container orchestration provided the flexibility and scalability required for HPC workloads
-- **GitOps workflow** — All infrastructure and application changes flow through Git, providing audit trails and rollback capabilities critical in financial services
-- **Kafka integration** — Event-driven architecture enabled real-time data processing at scale
+**Platform**
+- **Kubernetes on AWS** — Elastic compute that scales with demand, replacing fixed hardware investments
+- **Early GitOps workflow** — Jupyter Notebooks for quants: write, push, test. Version control met compliance requirements naturally.
+- **Okta + Auth0** — Dual authentication strategy: Okta for infrastructure access, Auth0 for service-level authentication
+
+**Data Architecture**
+- **Kafka for inbound data** — Market feeds (S&P 500, NYSE) moved from NFS files to streaming
+- **Memory over disk** — Binaries now consume from a stream instead of waiting on storage. I/O bottleneck gone.
 
 ## The Result
 
-The platform achieved a **6,000% efficiency gain** in computational throughput. More importantly, the solution proved durable — it continues to support **$1.4 trillion in managed assets** years after initial deployment.
+Binaries that once took all night to consume data from disk now crushed entire datasets within minutes — a **6,000% efficiency gain**. Infrastructure shifted from CapEx to OpEx — and became a write-off. Years later, the platform still supports **$1.4 trillion in managed assets**.
 
 ## Lessons Learned
 
-In financial services, reliability isn't optional. The GitOps approach provided the change management rigor that compliance teams require while giving engineering teams the velocity they need. The dual-auth strategy — infrastructure vs. service authentication — has become a pattern I've reused in subsequent engagements.
+In financial services, predictability isn't optional. The GitOps workflow gave quants push-button testing of financial models — write, push, results. Compliance got audit trails. Engineering got velocity. Everyone moved faster.
