@@ -22,7 +22,7 @@ Led the consulting engagement for a military tech refresh, most notably detachin
 
 - **Filed upstream issues** — Documented the GovCloud gaps and worked with AWS to enable Karpenter support
 - **Argo/Kustomize implementation** — Achieved 1,500% improvement in deployment efficiency and 1,800% improvement in upgrade efficiency
-- **Security tooling** — Introduced HashiCorp Vault and Boundary for secrets management and secure access
+- **Security tooling** — Introduced HashiCorp Vault for secrets management and Boundary for secure access
 - **Technical proposals** — Authored proposals for EKS adoption, KubeDB implementation, and process improvements
 
 ## The Result
