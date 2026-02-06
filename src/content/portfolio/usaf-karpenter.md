@@ -12,11 +12,11 @@ order: 2
 
 ## The Challenge
 
-The US Air Force needed to modernize their platform infrastructure while operating within the constraints of AWS GovCloud. Karpenter — AWS's next-generation Kubernetes node provisioner — wasn't yet functional in GovCloud environments, leaving government workloads stuck with less efficient scaling options.
+The US Air Force needed to modernize application delivery. My team wrote a set of proposals to modernize the flow, including infrastructure, deployment pipelines, security tooling. One small issue: Karpenter was not ready for GovCloud.
 
 ## The Approach
 
-Led the consulting engagement for a military tech refresh, translating client goals into epics and actionable stories. Beyond the immediate platform work, identified Karpenter's GovCloud incompatibility as a blocker affecting the entire US Government cloud community.
+Led the consulting engagement for a military tech refresh, most notably detaching some apps from an internal monolith and separating them for individual deployment via Argo CD. Beyond the immediate platform work, identified Karpenter's GovCloud incompatibility as a blocker affecting the entire US Government cloud community.
 
 ### Key Contributions
 
@@ -31,4 +31,4 @@ The Karpenter fix delivered an **82% reduction in EC2 costs** — and because th
 
 ## Lessons Learned
 
-Sometimes the most impactful work isn't building new features — it's removing blockers that affect an entire ecosystem. The upstream fix took less time than building a workaround would have, and the benefit multiplied across every government agency using AWS.
+Sometimes the most impactful work isn't building new features — it's removing small blockers. While this process was time-consuming, it represented less time than any alternative.
