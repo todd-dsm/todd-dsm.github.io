@@ -1,6 +1,8 @@
-When posed with a problem, I try to imagine what what someone much smarter than myself would do... for example, [Landon Curt Noll](https://share.google/JhOZsDrbz6mCiIPrC) and [W. Edwards Deming](https://share.google/ODVJZG62MzOUCnWHV)...
+When posed with a serious challenge, I try to imagine what someone much smarter than myself would do...
 
-Perhaps having a drink, at a hotel bar. After a last conference session. Landon has his badge flipped backward. Deming orders scotch, neat. The stool between them is empty.
+For example, [Landon Curt Noll](https://share.google/JhOZsDrbz6mCiIPrC) or [W. Edwards Deming](https://share.google/ODVJZG62MzOUCnWHV). Perhaps having a drink, at a hotel bar. After a last conference session.
+
+Landon has his badge flipped backward. Deming orders scotch, neat. The stool between them is empty.
 
 **Deming:** You're the one who uses lava lamps for cryptography.
 
@@ -152,4 +154,4 @@ Perhaps having a drink, at a hotel bar. After a last conference session. Landon 
 
 *The bartender pours two more. The conversation goes on—as it always does between people who build things and people who study why things break, when they finally discover they've been sitting at the same bar all along.*
 
-And then I make every attempt to do ***that***.
+...and then I make every attempt to do ***that***.
